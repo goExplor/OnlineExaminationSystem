@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.onlineexam.mapper.UserMapper">
+	<select id="indexss" parameterType="UserBean" resultType="UserBean">
+		select * from t_user where uname=#{uname} and upwd=#{upwd}
+	</select>	
+	<select id="findUname" parameterType="string" resultType="int">
+		select count(*) from t_user where uname=#{uname}
+	</select>	
+	<insert id="register" parameterType="UserBean" >
+		insert into t_user  values(#{uid},#{uname},#{upwd},#{uintro},#{uview},#{ustate},#{ubreif})
+	</insert>
+	<select id="selectUid" parameterType="string" resultType="UserBean">
+		select * from t_user where uid=#{uid}
+	</select>
+	<update id="update" parameterType="UserBean">
+		update t_user set uview=#{uview},uintro=#{uintro},ubreif=#{ubreif} where uid=#{uid}
+	</update>
+</mapper>
